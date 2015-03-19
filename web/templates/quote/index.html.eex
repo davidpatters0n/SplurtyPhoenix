@@ -1,0 +1,33 @@
+<div class="page-content col-xs-10 col-xs-offset-1">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Saying</th>
+        <th>Author</th>
+        <th>Actions</th>
+    </thead>
+    <%= for q <- @quotes do %>
+    <tr>
+      <td>
+        <a href="<%=quote_path(@conn, :show, q.id) %>">
+          <%= q.saying %>
+        </a>
+      </td>
+      <td>
+        <%= q.author %>
+      </td>
+      <td>
+        <a href="<%=quote_path(@conn, :edit, q.id) %>" class="btn btn-danger">
+          Edit
+        </a>
+
+        <a href="<%= quote_path(@conn, :destroy, q.id) %>" data-method="DELETE" class="rest btn btn-danger">
+          Destroy
+        </a>
+
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>
